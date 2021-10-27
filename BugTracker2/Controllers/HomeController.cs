@@ -1,16 +1,8 @@
 ﻿using BugTracker2.Models;
-using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using BugTracker2.DataAccess;
-using System.Data;
-using BugTracker2.Interfaces;
+
 
 namespace BugTracker2.Controllers
 {
