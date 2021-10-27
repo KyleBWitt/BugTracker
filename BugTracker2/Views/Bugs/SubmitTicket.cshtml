@@ -1,0 +1,91 @@
+﻿@page
+@using BugTracker2.Models;
+@model BugTracker2.Models.BugModel;
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link " href="Home">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Bugs/BugHistory">
+                    <i class="bi bi-menu-button-wide"></i><span>Bug History</span>
+                </a>
+            </li><!-- End Components Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart"></i><span>Charts</span>
+                </a>
+            </li><!-- End Charts Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Login">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Bugs/SubmitTicket">
+                    <i class="bi bi-envelope"></i>
+                    <span>Submit A Ticket</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+        </ul>
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <div class="col-lg-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="pt-4 pb-2">
+                        <h5 class="card-title text-center pb-0 fs-4">Submit A Ticket</h5>
+                        <p class="text-center small">Describe the issue you are having.</p>
+                    </div>
+                    <form id="cleetus">
+
+                        @using (Html.BeginForm("SubmitTicket", "Bugs", FormMethod.Post))
+                        {
+                            @Html.TextAreaFor(m => m.BugDescription, new
+                            { style = "width: 100%; height: 100px;", @id = "cleetus" })
+                            @Html.ValidationMessageFor(m => m.BugDescription)
+                            <input type="submit" style="width: 100%; height: 35px;" value="Submit" />
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    </footer><!-- End Footer -->
+
+</body>
+</html>
+
+<script src="lib/jquery/dist/jquery.min.js"></script>
+<script src="lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

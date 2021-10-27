@@ -1,0 +1,179 @@
+﻿@using BugTracker2.Models;
+@model BugTracker2.Models.BugModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="Home">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed"  href="Bugs/BugHistory">
+                    <i class="bi bi-menu-button-wide"></i><span>Bug History</span>
+                </a>
+
+            </li><!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart"></i><span>Charts</span>
+                </a>
+            </li><!-- End Charts Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Login">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Bugs/SubmitTicket">
+                    <i class="bi bi-envelope"></i>
+                    <span>Submit A Ticket</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <!--Bug Management UI-->
+
+        <div class="container p-4 bg-light shadow-lg" id="stubborndiv">
+
+            <h3 class="font-weight-light text-black" style="font-family: Bahnschrift; font-size: xx-large;">Bug Management UI</h3>
+            <div class="row flex-row">
+
+                <div class="col-4 p-1 min-vh-100">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="container p-1 shadow-lg border border: rounded">
+                                <h6 class="card-title text-uppercase text-center font-weight-light" style="font-family: Bahnschrift; font-size: large ">New</h6>
+                            </div>
+                            <div class="items border border-light">
+
+                                @foreach (var bug in BugModel.LoadBugs().Where(x => x.BugStatus.Equals("New")))
+                                {
+                                    //Need to fix id below so each element has a unique id for editing
+                                    <div class="card draggable shadow-sm" id="cd1" draggable="true" ondragstart="drag(event)">
+                                        <div class="card-body p-1 border">
+                                            <div class="card-title">
+                                                <button class="btn btn-primary btn-sm float-right">@bug.BugStatus</button>
+                                                <a>Bug ID: @bug.BugID</a>
+                                            </div>
+                                            <div class="container p-1 shadow-lg border border: rounded">
+                                                <p class="text-md-left">
+                                                    @bug.BugDescription
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 p-1 min-vh-100">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="container p-1 shadow-lg border border: rounded">
+                                <h6 class="card-title text-uppercase text-center font-weight-light" style="font-family: Bahnschrift; font-size: large ">Open</h6>
+                            </div>
+                            <div class="items border border-light">
+                                @foreach (var bug in BugModel.LoadBugs().Where(x => x.BugStatus.Equals("Open")))
+                                {
+                                    //Need to fix id below so each element has a unique id for editing
+                                    <div class="card draggable shadow-sm" id="cd2" draggable="true" ondragstart="drag(event)">
+                                        <div class="card-body p-1 border">
+                                            <div class="card-title">
+                                                <button class="btn btn-warning btn-sm float-right">@bug.BugStatus</button>
+                                                <a>Bug ID: @bug.BugID</a>
+                                            </div>
+                                            <div class="container p-1 shadow-lg border border: rounded">
+                                                <p class="text-md-left">
+                                                    @bug.BugDescription
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 p-1 min-vh-100">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="container p-1 shadow-lg border border: rounded">
+                                <h6 class="card-title text-uppercase font-weight-light text-center" style="font-family: Bahnschrift; font-size: large ">Complete</h6>
+                            </div>
+                            <div class="items border border-light">
+                                @foreach (var bug in BugModel.LoadBugs().Where(x => x.BugStatus.Equals("Complete")))
+                                {
+                                    //Need to fix id below so each element has a unique id for editing
+                                    <div class="card draggable shadow-sm" id="cd3" draggable="true" ondragstart="drag(event)">
+                                        <div class="card-body p-1 border">
+                                            <div class="card-title">
+                                                <button class="btn btn-success btn-sm float-right">@bug.BugStatus</button>
+                                                <a>Bug ID: @bug.BugID</a>
+                                            </div>
+                                            <div class="container p-1 shadow-lg border border: rounded">
+                                                <p class="text-md-left">
+                                                    @bug.BugDescription
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Bug Management UI-->
+        
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    </footer><!-- End Footer -->
+
+</body>
+</html>
+
+

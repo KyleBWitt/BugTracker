@@ -1,0 +1,141 @@
+﻿@page
+@using BugTracker2.Models;
+@model BugTracker2.Models.BugModel
+@{
+}
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="Home">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="Bugs/BugHistory">
+                    <i class="bi bi-menu-button-wide"></i><span>Bug History</span>
+                </a>
+
+            </li><!-- End Components Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-bar-chart"></i><span>Charts</span>
+                </a>
+            </li><!-- End Charts Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Login">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    <span>Login</span>
+                </a>
+            </li><!-- End Login Page Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="Bugs/SubmitTicket">
+                    <i class="bi bi-envelope"></i>
+                    <span>Submit A Ticket</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
+        </ul>
+
+    </aside><!-- End Sidebar-->
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <!-- Bug History -->
+        <div class="card recent-sales">
+
+            <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">Recent Bugs <span>| Add filter desc here</span></h5>
+
+                <table class="table datatable table-hover table-striped">
+                    <thead @*class="thead-dark"*@>
+                        <tr>
+                            <th scope="col">Bug ID</th>
+                            <!--Assigned to could use dropdown menu of all valid assignees-->
+                            <th scope="col">Assigned To</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var bug in BugModel.LoadBugs())
+                        {
+                            <tr>
+                                <th scope="row"><a href="#">@bug.BugID</a></th>
+                                <td>Kyle Witt</td>
+                                <td><a href="#" class="text-primary">@bug.BugDescription</a></td>
+                                <td>@bug.CreatedOn</td>
+                                @if (bug.BugStatus.Equals("New"))
+                                {
+                                    <td><span class="badge bg-primary">@bug.BugStatus</span></td>
+
+                                }
+                                else if (bug.BugStatus.Equals("Open"))
+                                {
+                                    <td><span class="badge bg-warning">@bug.BugStatus</span></td>
+
+                                }
+                                else if (bug.BugStatus.Equals("Complete"))
+                                {
+                                    <td><span class="badge bg-success">@bug.BugStatus</span></td>
+
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+        </div>
+        @*End Bug History*@
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    </footer><!-- End Footer -->
+
+</body>
+</html>
