@@ -34,7 +34,7 @@ namespace BugTracker2.Controllers
         public IActionResult SubmitTicket(BugModel bug)
         {
             //BugModel Object created for insert into query
-            BugModel data = new BugModel
+            BugModel data = new()
             {
                  BugStatus = "New",
                 BugDescription = bug.BugDescription //Will be whatever is entered into description form              
