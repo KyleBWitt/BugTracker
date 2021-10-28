@@ -1,5 +1,4 @@
-﻿
-namespace BugTracker2.Models
+﻿namespace BugTracker2.Models
 {
     public class UserModel 
     {
@@ -7,6 +6,11 @@ namespace BugTracker2.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AuthorizationLevel { get; set; }
+
+        public UserModel()
+        {
+
+        }
      
     }
 }

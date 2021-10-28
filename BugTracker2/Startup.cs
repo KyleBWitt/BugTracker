@@ -26,12 +26,20 @@ namespace BugTracker2
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+
+            services.AddIdentity<AppUser, AppRole>(options =>
             {
-                options.LoginPath = "/LoginController/Login";
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<IdentityAppContext>();
+
+            services.AddDbContext<IdentityAppContext>(cfg =>
+            {
+                cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
+            services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        
             services.AddAuthorization();
             services.AddTransient<IBugModel, BugModel>();
             
@@ -57,7 +65,7 @@ namespace BugTracker2
             
             app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -12,10 +12,6 @@ namespace BugTracker2.Interfaces
         string BugDescription { get; set; }
         DateTime CreatedOn { get; set; }
 
-        //public int CreateBug(BugModel bug);
-
-        //public List<BugModel> LoadBugs();
-
         public static int CreateBug(BugModel bug)
         {
             BugModel data = new()
