@@ -7,8 +7,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using BugTracker2.Interfaces;
 using BugTracker2.Models;
+using Microsoft.AspNetCore.Http;
+using BugTracker2.Interfaces;
 
 namespace BugTracker2
 {
@@ -37,12 +38,10 @@ namespace BugTracker2
                 cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddDbContext<AppDbContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-        
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAuthorization();
             services.AddTransient<IBugModel, BugModel>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
