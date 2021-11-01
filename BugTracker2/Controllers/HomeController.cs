@@ -1,23 +1,27 @@
-﻿using BugTracker2.Models;
+﻿using BugTracker2.DataAccess;
+using BugTracker2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BugTracker2.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IdentityAppContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IdentityAppContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            _logger.LogInformation($"Testing _logger injection");
-            return View();
+            var results = _context.bugs.Where(b => b.BugID > 0).ToList();
+            return View(results);
         }
 
         public IActionResult Privacy()

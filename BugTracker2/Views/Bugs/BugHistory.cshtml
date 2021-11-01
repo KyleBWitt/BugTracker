@@ -1,14 +1,10 @@
-﻿@page
-@using BugTracker2.Models;
-@model BugTracker2.Models.BugModel
+﻿@model List<BugTracker2.Models.BugModel>
 @{
 }
 <!DOCTYPE html>
 <html>
 
-
 <body>
-
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
@@ -63,23 +59,8 @@
         </div><!-- End Page Title -->
         <!-- Bug History -->
         <div class="card recent-sales">
-
-            <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-            </div>
-
             <div class="card-body">
                 <h5 class="card-title">Recent Bugs <span>| Add filter desc here</span></h5>
-
                 <table class="table datatable table-hover table-striped">
                     <thead @*class="thead-dark"*@>
                         <tr>
@@ -92,8 +73,7 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        @foreach (var bug in BugModel.LoadBugs())
+                        @foreach (var bug in Model)
                         {
                             <tr>
                                 <th scope="row"><a href="#">@bug.BugID</a></th>
@@ -118,10 +98,8 @@
                             </tr>
                         }
                     </tbody>
-                    </table>
-
+                </table>
             </div>
-        </div>
         </div>
         @*End Bug History*@
 

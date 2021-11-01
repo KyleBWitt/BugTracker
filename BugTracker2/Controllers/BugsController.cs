@@ -4,25 +4,21 @@ using BugTracker2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BugTracker2.Controllers
 {
     public class BugsController : Controller
     {
-
         private readonly IBugModel _bugModel;
+        private readonly IdentityAppContext _context;
         private readonly ILogger<BugsController> _logger;
-        private readonly AppDbContext _context;
 
-        public BugsController(ILogger<BugsController> logger, AppDbContext context, IBugModel bugModel)
+        public BugsController(ILogger<BugsController> logger, IdentityAppContext context, IBugModel bugModel)
         {
             _logger = logger;
             _context = context;
             _bugModel = bugModel;
-
         }
 
         public IActionResult Index()
@@ -33,28 +29,37 @@ namespace BugTracker2.Controllers
         //[HttpPost]
         public IActionResult SubmitTicket(BugModel bug)
         {
-            //BugModel Object created for insert into query
             BugModel data = new()
-            {
-                 BugStatus = "New",
-                BugDescription = bug.BugDescription //Will be whatever is entered into description form              
+            {     
+                BugStatus = "New",
+                BugDescription = bug.BugDescription, //Will be whatever is entered into description form              
+                CreatedOn = DateTime.Now
             };
                     
             //Only sends if description is entered.  Was sending as soon as page loaded and sending NULL values to DB
             if(data.BugDescription != null)
             {
-                BugModel.CreateBug(data);
+                _context.bugs.Add(data);
+                _context.SaveChanges();
             };
 
-            //Clears bug description submission form
             ModelState.Clear();
             return View();
         }
 
-        //Get Bugs
+        //[HttpGet]
         public IActionResult BugHistory()
         {
-            return View();
+            try
+            {
+                var results = _context.bugs.Where(b => b.BugID > 0).ToList();
+                return View(results);
+            }
+            catch(Exception ex)
+            {
+                return (IActionResult)ex;
+            }
+           
         }
 
     }

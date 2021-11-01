@@ -51,6 +51,8 @@ namespace BugTracker2.Controllers
         public async Task<IActionResult> Login()
         {
             var result = await _signInManager.PasswordSignInAsync("TestUser", "Test123!", false, false);
+
+            //result.Succeeded ? return RedirectToAction("Index", "Home") : ViewBag.Result = "Result is:" + result.ToString();
             if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
@@ -64,8 +66,7 @@ namespace BugTracker2.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-               
+            return RedirectToAction("Index", "Home");             
         }
     }
 }
