@@ -61,6 +61,19 @@ namespace BugTracker2.Controllers
             }
            
         }
+        public IActionResult BugBoard()
+        {
+            try
+            {
+                var results = _context.bugs.Where(b => b.BugID > 0).ToList();
+                return View(results);
+            }
+            catch (Exception ex)
+            {
+                return (IActionResult)ex;
+            }
+
+        }
 
     }
 }

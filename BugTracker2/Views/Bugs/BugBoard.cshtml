@@ -1,0 +1,133 @@
+﻿@model List<BugTracker2.Models.BugModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html>
+
+<body>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <!--Bug Management UI-->
+
+        <div class="container p-4 bg-light shadow-lg rounded-2" id="stubborndiv">
+
+            <h3 class="font-weight-light text-black" style="font-family: calibri; font-size: xx-large;">Bug Management UI</h3>
+            <div class="row flex-row">
+
+                <div class="col-4 p-1 min-vh-100" id="newcolumn">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" @*ondragleave="clearDrop(event)"*@>
+                                <div class="container p-1 shadow-lg border border: rounded">
+                                    <h6 class="card-title text-uppercase text-center font-weight-light" style="font-family: calibri; font-size: large ">New</h6>
+                                </div>
+                                <div class="items border border-light">
+                                    @foreach (var bug in Model.Where(x => x.BugStatus.Equals("New")))
+                                    {
+                                        //Need to fix id below so each element has a unique id for editing
+                                        <div class="card draggable shadow-sm" id="cd1" draggable="true" ondragstart="drag(event)">
+                                            <div class="card-body p-1 border">
+                                                <div class="card-title">
+                                                    <button class="btn btn-primary btn-sm float-right">@bug.BugStatus</button>
+                                                    <a>Bug ID: @bug.BugID</a>
+                                                </div>
+                                                <div class="container p-1 shadow-lg border border: rounded">
+                                                    <p class="text-md-left">
+                                                        @bug.BugDescription
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 p-1 min-vh-100" id="opencolumn">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" @*ondragleave="clearDrop(event)"*@>
+                                <div class="container p-1 shadow-lg border border: rounded">
+                                    <h6 class="card-title text-uppercase text-center font-weight-light" style="font-family: calibri; font-size: large ">Open</h6>
+                                </div>
+                                <div class="items border border-light">
+                                    @foreach (var bug in Model.Where(x => x.BugStatus.Equals("Open")))
+                                    {
+                                        //Need to fix id below so each element has a unique id for editing
+                                        <div class="card draggable shadow-sm" id="cd2" draggable="true" ondragstart="drag(event)">
+                                            <div class="card-body p-1 border">
+                                                <div class="card-title">
+                                                    <button class="btn btn-warning btn-sm float-right">@bug.BugStatus</button>
+                                                    <a>Bug ID: @bug.BugID</a>
+                                                </div>
+                                                <div class="container p-1 shadow-lg border border: rounded">
+                                                    <p class="text-md-left">
+                                                        @bug.BugDescription
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4 p-1 min-vh-100" id="completecolumn">
+                    <div class="card bg-light min-vh-100 shadow-lg">
+                        <div class="card-body p-1">
+                            <div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" @*ondragleave="clearDrop(event)"*@>
+                                <div class="container p-1 shadow-lg border border: rounded">
+                                    <h6 class="card-title text-uppercase font-weight-light text-center" style="font-family: calibri; font-size: large ">Complete</h6>
+                                </div>
+                                <div class="items border border-light">
+                                    @foreach (var bug in Model.Where(x => x.BugStatus.Equals("Complete")))
+                                    {
+                                        //Need to fix id below so each element has a unique id for editing
+                                        <div class="card draggable shadow-sm" id="cd3" draggable="true" ondragstart="drag(event)">
+                                            <div class="card-body p-1 border">
+                                                <div class="card-title">
+                                                    <button class="btn btn-success btn-sm float-right">@bug.BugStatus</button>
+                                                    <a>Bug ID: @bug.BugID</a>
+                                                </div>
+                                                <div class="container p-1 shadow-lg border border: rounded">
+                                                    <p class="text-md-left">
+                                                        @bug.BugDescription
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Bug Management UI-->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    </footer><!-- End Footer -->
+
+</body>
+</html>
+
+
