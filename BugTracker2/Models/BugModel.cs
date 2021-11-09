@@ -1,9 +1,7 @@
 ﻿using BugTracker2.DataAccess;
 using BugTracker2.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace BugTracker2.Models
 {

@@ -318,10 +318,13 @@
 
 })();
 
+
+//JS drag and drop functionality
 const drag = (event) => {
     event.dataTransfer.setData("text/plain", event.target.id);
 }
 
+//Need to add condition where cards can't be dropped on each other.  Make it go above or below depending on which side of the middle it's on
 const allowDrop = (ev) => {
     ev.preventDefault();
     if (hasClass(ev.target, "dropzone")) {
@@ -333,6 +336,7 @@ const clearDrop = (ev) => {
     removeClass(ev.target, "droppable");
 }
 
+//Need to add condition where cards can't be dropped on each other.  Make it go above or below depending on which side of the middle it's on
 const drop = (event) => {
     event.preventDefault();
     const data = event.dataTransfer.getData("text/plain");
@@ -358,13 +362,13 @@ const updateDropzones = () => {
     var dz = $('<div class="dropzone rounded" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="clearDrop(event)"> &nbsp; </div>');
 
     // delete old dropzones
-    $('.dropzone').remove();
+    //$('.dropzone').remove();
 
     // insert new dropdzone after each item   
-    dz.insertAfter('.card.draggable');
+    //dz.insertAfter('.card.draggable');
 
     // insert new dropzone in any empty swimlanes
-    $(".items:not(:has(.card.draggable))").append(dz);
+   /* $(".items:not(:has(.card.draggable))").append(dz);*/
 };
 
 // helpers

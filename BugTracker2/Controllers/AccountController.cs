@@ -50,12 +50,13 @@ namespace BugTracker2.Controllers
 
         public async Task<IActionResult> Login()
         {
+            //Set this up to take user input for authentication/authorization
             var result = await _signInManager.PasswordSignInAsync("TestUser", "Test123!", false, false);
 
             //result.Succeeded ? return RedirectToAction("Index", "Home") : ViewBag.Result = "Result is:" + result.ToString();
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("BugBoard", "Bugs");
             }
             else
             {
