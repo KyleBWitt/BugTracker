@@ -25,7 +25,7 @@
                         <tr>
                             <th scope="col">Bug ID</th>
                             <!--Assigned to could use dropdown menu of all valid assignees-->
-                            <th scope="col">Assigned To</th>
+                            <th scope="col">Created By</th>
                             <th scope="col">Description</th>
                             <th scope="col">Date Created</th>
                             <th scope="col">Status</th>
@@ -36,22 +36,22 @@
                         {
                             <tr>
                                 <th scope="row"><a href="#">@bug.BugID</a></th>
-                                <td>Kyle Witt</td>
-                                <td><a href="#" class="text-primary">@bug.BugDescription</a></td>
+                                <td>@bug.CreatedBy</td>
+                                <td>@bug.BugDescription</td>
                                 <td>@bug.CreatedOn</td>
                                 @if (bug.BugStatus.Equals("New"))
                                 {
-                                    <td><span class="badge bg-primary">@bug.BugStatus</span></td>
+                                    <td><span class="badge bg-primary" style="width: 100%">@bug.BugStatus</span></td>
 
                                 }
                                 else if (bug.BugStatus.Equals("Open"))
                                 {
-                                    <td><span class="badge bg-warning">@bug.BugStatus</span></td>
+                                    <td><span class="badge bg-warning" style="width: 100%">@bug.BugStatus</span></td>
 
                                 }
                                 else if (bug.BugStatus.Equals("Complete"))
                                 {
-                                    <td><span class="badge bg-success">@bug.BugStatus</span></td>
+                                    <td><span class="badge bg-success" style="width: 100%">@bug.BugStatus</span></td>
 
                                 }
                             </tr>

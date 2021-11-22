@@ -26,16 +26,19 @@ namespace BugTracker2.Controllers
             {
                 ViewBag.Message = "User already registered";
 
-                //Try and find "TestUser" from UserManager
-                AppUser user = await _userManager.FindByNameAsync("TestUser");
+                //Try and find user from UserManager
+                AppUser user = await _userManager.FindByNameAsync("KBW110988");
                 //If it doesn't find the user, creates one with these properties
                 if(user == null)
                 {
-                    user = new AppUser();
-                    user.UserName = "TestUser";
-                    user.Email = "TestUser@test.com";
-                    user.FirstName = "Testboy";
-                    user.LastName = "Magee";
+                    //Change this to reflect validated user input
+                    user = new AppUser
+                    {
+                        UserName = "KBW110988",
+                        Email = "kbw110988@gmail.com",
+                        FirstName = "Kyle",
+                        LastName = "Witt"
+                    };
 
                     IdentityResult result = await _userManager.CreateAsync(user, "Test123!");
                     ViewBag.Message = "User was created";
@@ -48,12 +51,11 @@ namespace BugTracker2.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login(AppUser user)
         {
             //Set this up to take user input for authentication/authorization
-            var result = await _signInManager.PasswordSignInAsync("TestUser", "Test123!", false, false);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, "Test123!", false, false);
 
-            //result.Succeeded ? return RedirectToAction("Index", "Home") : ViewBag.Result = "Result is:" + result.ToString();
             if (result.Succeeded)
             {
                 return RedirectToAction("BugBoard", "Bugs");
@@ -62,6 +64,10 @@ namespace BugTracker2.Controllers
             {
                 ViewBag.Result = "Result is:" + result.ToString();
             }
+            return View();
+        }
+        public IActionResult LoginForm()
+        {
             return View();
         }
         public async Task<IActionResult> Logout()
