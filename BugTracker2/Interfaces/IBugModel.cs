@@ -8,5 +8,6 @@ namespace BugTracker2.Interfaces
         string BugStatus { get; set; }
         string BugDescription { get; set; }
         DateTime CreatedOn { get; set; }
+        string CreatedBy { get; set; }
     }
 }

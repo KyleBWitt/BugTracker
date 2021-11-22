@@ -24,6 +24,7 @@ namespace BugTracker2.Models
         public string BugStatus { get; set; }
         public string BugDescription { get; set; }
         public DateTime CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
 
     }
 }

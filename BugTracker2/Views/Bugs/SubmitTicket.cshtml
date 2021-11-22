@@ -1,12 +1,8 @@
 ﻿@page
-@using BugTracker2.Models;
 @model BugTracker2.Models.BugModel;
-}
 <!DOCTYPE html>
 <html>
-
 <body>
-
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Dashboard</h1>
@@ -26,7 +22,7 @@
                         <p class="text-center small">Describe the issue you are having.</p>
                     </div>
                     <form id="cleetus">
-
+                        @*This submit needs to take into account who is logged in when submitted*@
                         @using (Html.BeginForm("SubmitTicket", "Bugs", FormMethod.Post))
                         {
                             @Html.TextAreaFor(m => m.BugDescription, new
