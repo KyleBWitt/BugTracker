@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BugTracker2.Models
 {
-    public class BugModel : IBugModel
+    public class BugModel : IBoardItemModel
     {
 
         private readonly IdentityAppContext _context;

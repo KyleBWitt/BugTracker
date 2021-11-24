@@ -20,12 +20,12 @@
         <div class="container">
             <div class="row" style="display: flex;">
                 <div class="col-lg-6 ps-0">
-                    <div class="card pb-0">
+                    <div class="card" style="height: 368px;">
                         <div class="card-body">
                             <h5 class="card-title">Bar Chart</h5>
 
                             <!-- Bar Chart -->
-                            <canvas id="barChart" @*style="max-height: 400px;"*@></canvas>
+                            <canvas id="barChart" style="max-height: 400px;"></canvas>
                             <script>
                                 document.addEventListener("DOMContentLoaded", () => {
                                     new Chart(document.querySelector('#barChart'), {
@@ -34,7 +34,7 @@
                                             labels: ['KW', 'MW', 'TA', 'NV', 'SR', 'PM'],
                                             datasets: [{
                                                 label: 'Bar Chart',
-                                                data: [65, 59, 80, 81, 56, 55, 40],
+                                                data: [65, 59, 80, 81, 56, 55, 4],
                                                 backgroundColor: [
                                                     'rgba(255, 99, 132, 0.2)',
                                                     'rgba(255, 159, 64, 0.2)',

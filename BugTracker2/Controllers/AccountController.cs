@@ -57,7 +57,7 @@ namespace BugTracker2.Controllers
         public async Task<IActionResult> Login(AppUser user)
         {
             //Set this up to take user input for authentication/authorization
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, "Tst123!", false, false);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, "Test123!", false, false);
 
             if (result.Succeeded)
             {
