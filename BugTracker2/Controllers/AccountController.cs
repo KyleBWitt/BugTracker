@@ -1,6 +1,7 @@
 ﻿using BugTracker2.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
@@ -12,12 +13,14 @@ namespace BugTracker2.Controllers
         //Same for SignInManager
         private UserManager<AppUser> _userManager { get; }
         private SignInManager<AppUser> _signInManager { get; }
+        private readonly ILogger<AccountController> _logger;
 
         public AccountController(UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager)
+            SignInManager<AppUser> signInManager, ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Register()
@@ -54,7 +57,7 @@ namespace BugTracker2.Controllers
         public async Task<IActionResult> Login(AppUser user)
         {
             //Set this up to take user input for authentication/authorization
-            var result = await _signInManager.PasswordSignInAsync(user.UserName, "Test123!", false, false);
+            var result = await _signInManager.PasswordSignInAsync(user.UserName, "Tst123!", false, false);
 
             if (result.Succeeded)
             {
@@ -62,9 +65,8 @@ namespace BugTracker2.Controllers
             }
             else
             {
-                ViewBag.Result = "Result is:" + result.ToString();
+                return RedirectToAction("LoginForm", "Account");
             }
-            return View();
         }
         public IActionResult LoginForm()
         {
