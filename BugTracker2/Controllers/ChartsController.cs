@@ -8,7 +8,7 @@ namespace BugTracker2.Controllers
 {
     public class ChartsController : Controller
     {
-        public IActionResult BarChart()
+        public IActionResult ChartDisplay()
         {
             return View();
         }

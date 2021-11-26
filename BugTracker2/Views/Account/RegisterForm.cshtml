@@ -1,10 +1,87 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@page
+@model BugTracker2.Models.AppUser;
 
-<p>@ViewBag.Message</p>
-<div>
-    <a asp-controller="Account" asp-action="Login">Login</a>
-</div>
+<!DOCTYPE html>
+<html>
+<body>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Register</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="Home">Home</a></li>
+                    <li class="breadcrumb-item active">Register</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="pt-4 pb-2">
+                    @*<h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>*@
+                    <p class="text-center small">Enter a username and password</p>
+                </div>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+                    <form class="row g-3 needs-validation" novalidate>
+
+                        <div class="col-12">
+                            <label for="yourUsername" class="form-label">Username</label>
+                            <div class="input-group has-validation">
+                                <input type="text" name="username" class="form-control" id="yourUsername" required>
+                                <div class="invalid-feedback">Please enter your username.</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="yourEmail" class="form-label">Email</label>
+                            <div class="input-group has-validation">
+                                <input type="text" name="Email" class="form-control" id="yourEmail" required>
+                                <div class="invalid-feedback">Please enter Email!</div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12">
+                            <label for="yourEmail" class="form-label">First Name</label>
+                            <div class="input-group has-validation">
+                                <input type="text" name="FirstName" class="form-control" id="yourFirstName" required>
+                                <div class="invalid-feedback">Please enter your first name</div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12">
+                            <label for="yourEmail" class="form-label">Last Name</label>
+                            <div class="input-group has-validation">
+                                <input type="text" name="LastName" class="form-control" id="yourLastName" required>
+                                <div class="invalid-feedback">Please enter your last name</div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-12">
+                            <label for="yourPassword" class="form-label">Password</label>
+                            <div class="input-group has-validation">
+                                <input type="password" name="PasswordHash" class="form-control" id="yourPassword" required>
+                                <div class="invalid-feedback">Please enter a password.... Carefully</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+
+                            <button class="btn w-100" style="background-color: rgba(54, 162, 235, 0.2); border-color: rgb(54, 162, 235);" type="submit">Register</button>
+                        </div>
+                        <div class="col-12">
+                            <p class="small mb-0">Already have an account? <a href="Account/Login">Login</a></p>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+    </footer><!-- End Footer -->
+
+</body>
+</html>
