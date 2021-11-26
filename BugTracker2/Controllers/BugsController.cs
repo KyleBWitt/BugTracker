@@ -10,15 +10,15 @@ namespace BugTracker2.Controllers
 {
     public class BugsController : Controller
     {
-        private readonly IBugModel _bugModel;
+        private readonly IBoardItemModel _boardItemModel;
         private readonly IdentityAppContext _context;
         private readonly ILogger<BugsController> _logger;
 
-        public BugsController(ILogger<BugsController> logger, IdentityAppContext context, IBugModel bugModel)
+        public BugsController(ILogger<BugsController> logger, IdentityAppContext context, IBoardItemModel boardItemModel)
         {
             _logger = logger;
             _context = context;
-            _bugModel = bugModel;
+            _boardItemModel = boardItemModel;
         }
 
         public IActionResult Index()

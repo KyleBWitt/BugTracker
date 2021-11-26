@@ -40,7 +40,7 @@ namespace BugTracker2
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAuthorization();
-            services.AddTransient<IBugModel, BugModel>();
+            services.AddTransient<IBoardItemModel, BugModel>();
 
         }
 

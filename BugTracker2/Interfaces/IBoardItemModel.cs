@@ -2,7 +2,7 @@
 
 namespace BugTracker2.Interfaces
 {
-    public interface IBugModel
+    public interface IBoardItemModel
     {
         int BugID { get; set; }
         string BugStatus { get; set; }
