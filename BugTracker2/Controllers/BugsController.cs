@@ -30,10 +30,11 @@ namespace BugTracker2.Controllers
         public IActionResult SubmitTicket(BugModel bug)
         {
             BugModel data = new()
-            {     
-                BugStatus = "New",
+            {
+                BugStatus = "New", //All bugs created will default to new, so this is hardcoded
                 BugDescription = bug.BugDescription, //Will be whatever is entered into description form              
-                CreatedOn = DateTime.Now
+                CreatedOn = DateTime.Now,
+                CreatedBy = User.Identity.Name //Takes in current logged in user to be "CreatedBy" in the table
             };
                     
             //Only sends if description is entered.  Was sending as soon as page loaded and sending NULL values to DB
@@ -72,8 +73,6 @@ namespace BugTracker2.Controllers
             {
                 return (IActionResult)ex;
             }
-
         }
-
     }
 }

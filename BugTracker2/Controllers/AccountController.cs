@@ -9,8 +9,7 @@ namespace BugTracker2.Controllers
 {
     public class AccountController : Controller
     {
-        //DI properties for AppUser class created using UserManager
-        //Same for SignInManager
+        //Dependency Injection setup for AccountController
         private UserManager<AppUser> _userManager { get; }
         private SignInManager<AppUser> _signInManager { get; }
         private readonly ILogger<AccountController> _logger;
@@ -27,10 +26,9 @@ namespace BugTracker2.Controllers
         {
             try
             {
-                ViewBag.Message = "User already registered";
-
                 //Try and find user from UserManager
                 AppUser user = await _userManager.FindByNameAsync(yousir.UserName);
+
                 //If it doesn't find the user, creates one with these properties
                 if (user == null)
                 {
@@ -56,7 +54,6 @@ namespace BugTracker2.Controllers
 
         public async Task<IActionResult> Login(AppUser user)
         {
-            //Set this up to take user input for authentication/authorization
             var result = await _signInManager.PasswordSignInAsync(user.UserName, user.PasswordHash, false, false);
 
             if (result.Succeeded)

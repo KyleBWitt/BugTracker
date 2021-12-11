@@ -12,11 +12,11 @@
   scroll-behavior: smooth;
 }
 
-body {
+/*body {
   font-family: "Calibri", sans-serif;
   background: #f6f9ff;
   color: #444444;
-}
+}*/
 
 a {
   color: #4154f1;
@@ -844,7 +844,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Icons list page
 --------------------------------------------------------------*/
-.iconslist {
+/*.iconslist {
   display: grid;
   max-width: 100%;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -872,12 +872,12 @@ h1, h2, h3, h4, h5, h6 {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: #666;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Profie Page
 --------------------------------------------------------------*/
-.profile .profile-card img {
+/*.profile .profile-card img {
   max-width: 120px;
 }
 .profile .profile-card h2 {
@@ -924,23 +924,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .container p-4 bg-light shadow-lg{
     float: left;
-}
+}*/
 /*--------------------------------------------------------------
 # F.A.Q Page
 --------------------------------------------------------------*/
-.faq .basic h6 {
+/*.faq .basic h6 {
     font-size: 18px;
     font-weight: 600;
     color: #4154f1;
 }
 .faq .basic p {
   color: #6980aa;
-}
+}*/
 
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-.contact .info-box {
+/*.contact .info-box {
   padding: 28px 30px;
 }
 .contact .info-box i {
@@ -1038,7 +1038,7 @@ h1, h2, h3, h4, h5, h6 {
   100% {
     transform: rotate(360deg);
   }
-}
+}*/
 
 /*--------------------------------------------------------------
 # Error 404
