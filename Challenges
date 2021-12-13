@@ -1,0 +1,19 @@
+Challenges met while creating app for future reference.
+
+1. Implementing drag and drop elements for the ticket board.  Not as familiar with JS, so definite learning opportunity.
+
+2. Finding good project structure.  IE Controller for each view?, Controller for related views?, functions in classes for creating/loading/deleting bugs or REST/HTTP operations through controller, what interfaces to use?
+
+3. Started with Dapper for DB context, so different setup and query implementation than EF.  Switched over because I decided to use Identity for user login and could use the same DB context for CRUD operations instead of having 2 different contexts.
+EF process invovled setting up classes which represent the DB tables and adding migration.
+
+4. Took a few days to get Identity login working.  (NEW CONCEPT AND IMPLEMENTATION FOR ME, SO IT WAS COMPLETE LEARNING PROCESS). 
+Made AccountController which took in AppUser and SignInManager Classes.
+Public async Task<IActionResult> Register/Login.
+Checks if user is already created and if not instantiates new AppUser and fills in details based on what is entered.
+
+5. Had to backtrack to refactor all the functionality of Loading/Creating bugs through class functions and using Dapper to Controller requests and using EF
+
+6.Overall consolidation of repeated code to make for cleaner project
+
+7.First time using GreenSock for animation.  Pretty Cool.
