@@ -14,8 +14,10 @@ namespace BugTracker2.Controllers
         private SignInManager<AppUser> _signInManager { get; }
         private readonly ILogger<AccountController> _logger;
 
-        public AccountController(UserManager<AppUser> userManager,
-            SignInManager<AppUser> signInManager, ILogger<AccountController> logger)
+        public AccountController(
+            UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager, 
+            ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -49,7 +51,7 @@ namespace BugTracker2.Controllers
             {
                 ViewBag.Message = ex.Message;
             }
-            return View();
+            return RedirectToAction("BugBoard", "Bugs");
         }
 
         public async Task<IActionResult> Login(AppUser user)
