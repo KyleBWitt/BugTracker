@@ -1,4 +1,4 @@
-using BugTracker2.DataAccess;
+using BugTracker.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,11 +7,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using BugTracker2.Models;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Http;
-using BugTracker2.Interfaces;
+using BugTracker.Interfaces;
 
-namespace BugTracker2
+namespace BugTracker
 {
     public class Startup
     {

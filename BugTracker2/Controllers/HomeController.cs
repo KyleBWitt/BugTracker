@@ -1,11 +1,11 @@
-﻿using BugTracker2.DataAccess;
-using BugTracker2.Models;
+﻿using BugTracker.DataAccess;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 
-namespace BugTracker2.Controllers
+namespace BugTracker.Controllers
 {
     public class HomeController : Controller
     {

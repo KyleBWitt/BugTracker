@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
 
-namespace BugTracker2
+namespace BugTracker
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BugTracker2.Models
+namespace BugTracker.Models
 {
     public class UserModel 
     {

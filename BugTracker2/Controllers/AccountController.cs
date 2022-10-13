@@ -1,11 +1,11 @@
-﻿using BugTracker2.Models;
+﻿using BugTracker.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace BugTracker2.Controllers
+namespace BugTracker.Controllers
 {
     public class AccountController : Controller
     {

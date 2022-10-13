@@ -1,8 +1,8 @@
 ﻿//using System.Collections.Generic;
-//using BugTracker2.DataAccess;
-//using BugTracker2.Models;
+//using BugTracker.DataAccess;
+//using BugTracker.Models;
 
-//namespace BugTracker2.BusinessLogic
+//namespace BugTracker.BusinessLogic
 //{
 //    public class BugProcessor
 //    {

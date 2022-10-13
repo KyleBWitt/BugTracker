@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BugTracker2.Interfaces
+namespace BugTracker.Interfaces
 {
     public interface IBoardItemModel
     {

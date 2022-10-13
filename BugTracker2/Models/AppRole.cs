@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace BugTracker2.Models
+namespace BugTracker.Models
 {
     public class AppRole : IdentityRole<int>
     {

@@ -1,11 +1,11 @@
-﻿using BugTracker2.Models;
+﻿using BugTracker.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 
-namespace BugTracker2.DataAccess
+namespace BugTracker.DataAccess
 {
     public class IdentityAppContext : IdentityDbContext<AppUser, AppRole, int>
     {

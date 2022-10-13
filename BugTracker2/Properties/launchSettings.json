@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "BugTracker2": {
+    "BugTracker": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

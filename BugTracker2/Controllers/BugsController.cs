@@ -1,12 +1,12 @@
-﻿using BugTracker2.DataAccess;
-using BugTracker2.Interfaces;
-using BugTracker2.Models;
+﻿using BugTracker.DataAccess;
+using BugTracker.Interfaces;
+using BugTracker.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 
-namespace BugTracker2.Controllers
+namespace BugTracker.Controllers
 {
     public class BugsController : Controller
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BugTracker2.Migrations
+namespace BugTracker.Migrations
 {
     public partial class IdentityMigration : Migration
     {

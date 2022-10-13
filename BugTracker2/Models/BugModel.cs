@@ -1,9 +1,9 @@
-﻿using BugTracker2.DataAccess;
-using BugTracker2.Interfaces;
+﻿using BugTracker.DataAccess;
+using BugTracker.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace BugTracker2.Models
+namespace BugTracker.Models
 {
     public class BugModel : IBoardItemModel
     {

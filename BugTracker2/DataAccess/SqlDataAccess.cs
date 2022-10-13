@@ -5,7 +5,7 @@
 //using System.Data;
 //using System.Data.SqlClient;
 
-//namespace BugTracker2.DataAccess
+//namespace BugTracker.DataAccess
 //{
 //    public static class SqlDataAccess
 //    {
