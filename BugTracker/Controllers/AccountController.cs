@@ -1,8 +1,10 @@
 ﻿using BugTracker.Models;
+using BugTracker.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using StackExchange.Redis;
 using System;
 using System.Threading.Tasks;
 
@@ -57,6 +59,10 @@ namespace BugTracker.Controllers
 
         public async Task<IActionResult> Login(AppUser user)
         {
+            RedisService redisResult = new RedisService();
+            var resultFromRedis = redisResult.QueryRedisData();
+
+
             var result = await _signInManager.PasswordSignInAsync(user.UserName, user.PasswordHash, false, false);
 
             if (result.Succeeded)
