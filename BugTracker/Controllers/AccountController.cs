@@ -62,7 +62,7 @@ namespace BugTracker.Controllers
             if (result.Succeeded)
             {
                 //Works to write to text file
-                Log.Information("Wow");
+                //Log.Information("Wow");
 
                 //Also works to write to text file
                 _logger.LogInformation($"{user.UserName} logged in at {DateTime.Now}");
