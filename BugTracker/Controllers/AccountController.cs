@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using System;
 using System.Threading.Tasks;
 
@@ -60,10 +61,18 @@ namespace BugTracker.Controllers
 
             if (result.Succeeded)
             {
+                //Works to write to text file
+                Log.Information("Wow");
+
+                //Also works to write to text file
+                _logger.LogInformation($"{user.UserName} logged in at {DateTime.Now}");
+
                 return RedirectToAction("BugBoard", "Bugs");
             }
             else
             {
+                _logger.LogInformation($"Login failed at {DateTime.Now}");
+
                 return RedirectToAction("LoginForm", "Account");
             }
         }

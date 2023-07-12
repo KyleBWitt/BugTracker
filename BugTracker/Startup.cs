@@ -27,6 +27,7 @@ namespace BugTracker
         {
             services.AddRazorPages();
             services.AddControllersWithViews();
+            services.AddLogging();
 
             services.AddIdentity<AppUser, AppRole>(options =>
             {
